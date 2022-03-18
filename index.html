@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Near Earth Objects</title>
+</head>
+<body>
+    <h1>Near Earth Objects</h1>
+      <form action="/my-function" method="post">
+        <label for="startdate">Start date:</label>
+        <input type="date" name="startdate" id="startdate" data-date-format="YYYY-MM-DD"><br><br>
+        <label for="enddate">End date:</label>
+        <input type="date" name="enddate"id="enddate" data-date-format="YYYY-MM-DD"><br><br>
+
+        <button type="submit" name="submit" value="submit">Submit</button>
+     
+    </form>
+      <script>
+ document.querySelector('#startdate').onchange = function(){
+  let startDate = document.querySelector('#startdate').value;
+  let dtTo = new Date(startDate);
+  dtTo.setDate(dtTo.getDate() + 7);
+  let sMonthTo = ((dtTo.getMonth() + 1) < 10 ? '0' + (dtTo.getMonth() + 1) : (dtTo.getMonth() + 1));
+  let sDayTo = (dtTo.getDate() < 10 ? '0' + dtTo.getDate() : dtTo.getDate());
+  document.querySelector('#enddate').setAttribute('max', dtTo.getFullYear() + '-' + sMonthTo + '-' + sDayTo);
+};
+    </script>
+</body>
+</html>
